@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.header {
+    height: 104px;
+    overflow: visible;
+    background-color: $wash-color;
+    img {
+        height: 120px;
+    }
+}

@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+:host {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.card {
+    width: 100%;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .image {
+        margin-right: 24px;
+        max-width: 200px;
+        img {
+            max-width: 200px;
+        }
+    }
+    .price, .title {
+        font-size: 32px;
+        font-weight: $font-bold;
+        color: $dark-brown-color;
+    }
+    .text {
+        margin-right: 24px;
+        flex-grow: 1;
+        .customizations {
+            margin-top: 8px;
+            .customization {
+                color: $dark-brown-color;
+            }
+        }
+    }
+}

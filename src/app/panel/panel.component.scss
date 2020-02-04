@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+:host {
+    background-color: $wash-color;
+    display: block;   
+}
+.container {
+    background-color: white;
+    .row {
+        padding: 16px;
+        flex-direction: column;
+        font-family: 'Carvery';
+        color: $dark-brown-color;
+        .welcome {
+            font-size: 48px;
+            font-weight: $font-bold;
+            margin-bottom: 20px;
+        }
+        .subheading {
+            font-size: 32px;
+            font-weight: $font-semi-bold;
+            margin-bottom: 20px;
+            letter-spacing: 0.8px;
+        }
+    }
+}

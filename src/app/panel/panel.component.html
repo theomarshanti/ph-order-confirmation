@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <!--<div class="welcome">Welcome!</div>
+    <div class="subheading">Here is your order -</div>-->
+    <div class="subheading">Welcome. Here is your order -</div>
+    <div class="orders">
+      <app-card *ngFor= 'let card of cards' [info]='card'></app-card>
+    </div>
+  </div>
+</div>
