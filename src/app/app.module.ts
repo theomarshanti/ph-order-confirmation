@@ -9,6 +9,12 @@ import { PanelComponent } from './panel/panel.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { OrderWizardComponent } from './order-wizard/order-wizard.component';
 import { CommonModule } from '@angular/common';
+import {
+  InjectableRxStompConfig,
+  RxStompService, rxStompServiceFactory
+} from '@stomp/ng2-stompjs';
+import {rxStompConfig} from './core/rx-stomp.config';
+import { OrderUpdateService } from './services/order-update.service';
 
 @NgModule({
   declarations: [
@@ -24,10 +30,18 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     CommonModule,
     NgbModule,
-    // NgbCarouselModule
   ],
   providers: [
-    // NgbCarousel
+    OrderUpdateService,
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    },
+    {
+      provide: InjectableRxStompConfig,
+      useFactory: rxStompConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

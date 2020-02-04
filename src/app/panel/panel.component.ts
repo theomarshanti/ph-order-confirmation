@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Card } from '../models/card.model';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { OrderCard } from '../models/order-card.model';
 import { OrderWizardManagerService } from '../services/order-wizard-manager.service';
 import { pipe } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { first, map, takeWhile } from 'rxjs/operators';
 import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap/carousel/carousel';
+import { OrderUpdateService } from '../services/order-update.service';
 
 const carouselPageSize = 3;
 
@@ -12,25 +13,44 @@ const carouselPageSize = 3;
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss']
 })
-export class PanelComponent implements OnInit {
-  cards: Card[] = [];
+export class PanelComponent implements OnInit, OnDestroy {
+  @Input() cards: OrderCard[] = [];
   showCarousel = false;
-  carouselPages: Card[][] = [];
+  carouselPages: OrderCard[][] = [];
   total: number;
   pageNumber = 1;
-  constructor(private manager: OrderWizardManagerService) { }
+  alive;
+  constructor(private orderUpdateService: OrderUpdateService,
+              private manager: OrderWizardManagerService) { }
 
   ngOnInit() {
-    this.manager.getCards().pipe(first()).subscribe((cards: Card[]) => {
-      this.setCards(cards);
-      this.calculateTotal();
+    this.startOrderUpdateStream();
+    // this.manager.getCards().pipe(first()).subscribe((cards: OrderCard[]) => {
+    //   this.setCards(cards);
+    //   this.calculateTotal();
+    // });
+  }
+
+  ngOnDestroy() {
+    console.log('app component destroy');
+    this.alive = false;
+  }
+
+  private startOrderUpdateStream() {
+    this.orderUpdateService.statusUpdateStream().pipe(
+      map(update => this.formatUpdate(update)),
+      takeWhile(this.alive)
+    ).subscribe((card: OrderCard) => {
+      this.handleOrderCard(card);
     });
   }
 
-  setCards(cards: Card[]) {
+  handleOrderCard(card: OrderCard) {
+    this.cards.push(card);
+  }
+
+  setCards(cards: OrderCard[]) {
     this.cards = [...cards];
-    console.log(cards.length);
-    console.log(carouselPageSize);
     if (cards.length > carouselPageSize) {
       this.showCarousel = true;
       this.carouselPages = [];
@@ -40,6 +60,10 @@ export class PanelComponent implements OnInit {
     } else {
       this.showCarousel = false;
     }
+  }
+
+  formatUpdate(res: any): OrderCard {
+    return res as OrderCard;
   }
 
   calculateTotal() {

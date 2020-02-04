@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Card } from '../models/card.model';
+import { OrderCard } from '../models/order-card.model';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +7,7 @@ import { Card } from '../models/card.model';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() info: Card;
+  @Input() info: OrderCard;
 
   get price() {
     return Number(this.info.unitPrice) * this.info.quantity;

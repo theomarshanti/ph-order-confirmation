@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Card } from '../models/card.model';
+import { OrderCard } from '../models/order-card.model';
 import { Observable, of } from 'rxjs';
 
-const cards: Card[] = [
+const cards: OrderCard[] = [
   {
     imageUrl: 'https://www.panerabread.com/foundation/menu/grid/modern-greek-salad-with-quinoa-whole.jpg' +
       '.transform/foundation-retail-menu-placard-desktop-2x/image.20200203.jpg',
@@ -31,7 +31,7 @@ const cards: Card[] = [
   }
 ];
 
-const fourCards: Card[] = [
+const fourCards: OrderCard[] = [
   ...cards,
   {
     imageUrl: 'https://www.panerabread.com/foundation/menu/grid/baja-grain-bowl-with-chicken-test.jpg' +
@@ -54,7 +54,7 @@ export class OrderWizardManagerService {
 
   constructor() { }
 
-  getCards(): Observable<Card[]> {
+  getCards(): Observable<OrderCard[]> {
     // return of(cards);
     return of(fourCards);
   }
