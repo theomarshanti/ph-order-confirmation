@@ -55,6 +55,7 @@ export class OrderWizardManagerService {
   constructor() { }
 
   getCards(): Observable<Card[]> {
-    return of(cards);
+    // return of(cards);
+    return of(fourCards);
   }
 }

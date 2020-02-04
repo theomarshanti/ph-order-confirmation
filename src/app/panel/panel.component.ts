@@ -31,7 +31,7 @@ export class PanelComponent implements OnInit {
     this.cards = [...cards];
     console.log(cards.length);
     console.log(carouselPageSize);
-    if (cards.length >= carouselPageSize) {
+    if (cards.length > carouselPageSize) {
       this.showCarousel = true;
       this.carouselPages = [];
       while (cards.length) {
