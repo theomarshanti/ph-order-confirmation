@@ -31,6 +31,22 @@ const cards: Card[] = [
   }
 ];
 
+const fourCards: Card[] = [
+  ...cards,
+  {
+    imageUrl: 'https://www.panerabread.com/foundation/menu/grid/baja-grain-bowl-with-chicken-test.jpg' +
+      '.transform/foundation-retail-menu-placard-desktop-2x/image.20200203.jpg',
+    quantity: 1,
+    title: 'Modern Greek Salad with Quinoa',
+    unitPrice: '8.59',
+    customizations: [
+      'No Onions',
+      'No Tomato',
+      'Extra Corn'
+    ]
+  },
+];
+
 @Injectable({
   providedIn: 'root'
 })

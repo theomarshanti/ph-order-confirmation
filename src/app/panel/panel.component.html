@@ -2,9 +2,26 @@
   <div class="row">
     <!--<div class="welcome">Welcome!</div>
     <div class="subheading">Here is your order -</div>-->
-    <div class="subheading">Welcome. Here is your order -</div>
+    <div class="title-text">
+      <div class="subheading">Welcome. Here is your order - </div>
+      <div class="page-number" *ngIf="showCarousel">Page Number {{pageNumber}} of {{carouselPages.length}}</div>
+    </div>
     <div class="orders">
-      <app-card *ngFor= 'let card of cards' [info]='card'></app-card>
+      <ng-container *ngIf="!showCarousel">
+        <app-card *ngFor= 'let card of cards' [info]='card'></app-card>
+      </ng-container>
+      <ng-container *ngIf="showCarousel">
+        <ngb-carousel (slide)="onSlide($event)" [showNavigationArrows]="false" [keyboard]="true" [pauseOnHover]="false">
+          <ng-template ngbSlide *ngFor= "let carouselPage of carouselPages">
+            <app-card *ngFor= 'let card of carouselPage' [info]='card'></app-card>
+          </ng-template>
+        </ngb-carousel>
+      </ng-container>
+      <!--<div class="pageNumber" *ngIf="showCarousel">Page Number {{pageNumber}} of {{carouselPages.length}}</div>-->
+    </div>
+    <div class="divider"></div>
+    <div class="total"> 
+      Your total is - ${{total}}
     </div>
   </div>
 </div>
