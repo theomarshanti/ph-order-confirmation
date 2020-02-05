@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { OrderWizardComponent } from './order-wizard/order-wizard.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
   {
@@ -9,12 +10,16 @@ const routes: Routes = [
     component: AdvertisementComponent
   },
   {
-    path: 'pending',
+    path: 'promo',
     redirectTo: ''
   },
   {
-    path: 'status',
+    path: 'wizard',
     component: OrderWizardComponent
+  },
+  {
+    path: 'completion',
+    component: ConfirmationComponent
   }
 ];
 

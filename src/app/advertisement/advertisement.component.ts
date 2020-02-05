@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-advertisement',
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

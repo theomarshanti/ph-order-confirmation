@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.image-container {
+    height: $max-height;
+    width: 100vw;
+    overflow: hidden;
+    .ad {
+        vertical-align: middle;
+        min-height: $max-height;
+        min-width: 100vw;
+    }
+}

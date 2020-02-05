@@ -4,7 +4,7 @@
     <div class="subheading">Here is your order -</div>-->
     <div class="title-text">
       <div class="subheading">Welcome. Here is your order - </div>
-      <div class="page-number" *ngIf="showCarousel">Page Number {{pageNumber}} of {{carouselPages.length}}</div>
+      <div class="page-number" *ngIf="showCarousel">Page Number {{pageNumber}} of {{numberOfPages}}</div>
     </div>
     <div class="orders">
       <ng-container *ngIf="!showCarousel">
@@ -21,7 +21,7 @@
     </div>
     <div class="divider"></div>
     <div class="total"> 
-      Your total is - ${{total}}
+      Your total is - {{totalPrice | currency}}
     </div>
   </div>
 </div>

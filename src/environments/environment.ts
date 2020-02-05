@@ -1,7 +1,11 @@
 export const environment = {
   production: false,
+  enableWs: true,
   API : {
-    URL: 'http://localhost',
-    PORT: '4040'
+    HTTP_PROTOCOL: 'http://',
+    WS_PROTOCOL: 'ws://',
+    URL: 'localhost',
+    HTTP_PORT: '4040',
+    WS_PORT: '8085'
   }
 };

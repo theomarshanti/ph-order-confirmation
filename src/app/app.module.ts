@@ -9,12 +9,11 @@ import { PanelComponent } from './panel/panel.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { OrderWizardComponent } from './order-wizard/order-wizard.component';
 import { CommonModule } from '@angular/common';
-import {
-  InjectableRxStompConfig,
-  RxStompService, rxStompServiceFactory
-} from '@stomp/ng2-stompjs';
-import {rxStompConfig} from './core/rx-stomp.config';
 import { OrderUpdateService } from './services/order-update.service';
+import { WebsocketService } from './services/websocket.service';
+import { HttpClientModule } from '@angular/common/http';
+import { StatusUpdatesService } from './services/status-updates.service';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -24,24 +23,19 @@ import { OrderUpdateService } from './services/order-update.service';
     PanelComponent,
     AdvertisementComponent,
     OrderWizardComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [
     OrderUpdateService,
-    {
-      provide: RxStompService,
-      useFactory: rxStompServiceFactory,
-      deps: [InjectableRxStompConfig]
-    },
-    {
-      provide: InjectableRxStompConfig,
-      useFactory: rxStompConfig
-    }
+    WebsocketService,
+    StatusUpdatesService,
   ],
   bootstrap: [AppComponent]
 })

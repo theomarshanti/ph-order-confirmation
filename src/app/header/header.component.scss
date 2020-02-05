@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .header {
-    height: 104px;
+    height: $header-height;
     overflow: visible;
     background-color: $wash-color;
     img {

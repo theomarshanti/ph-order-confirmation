@@ -11,41 +11,17 @@
         flex-direction: column;
         font-family: 'Carvery';
         color: $dark-brown-color;
-        .title-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .welcome {
+        .thank-you {
             font-size: 48px;
             font-weight: $font-bold;
             margin-bottom: 20px;
         }
         .subheading {
-            display: inline-block;
             margin-top: 16px;
             font-size: 32px;
             font-weight: $font-semi-bold;
             margin-bottom: 20px;
             letter-spacing: 0.8px;
-        }
-        .page-number {
-            display: inline-block;
-            float:right;
-        }
-        .orders {
-            height: 720px;
-        }
-        .total {
-            font-size: 32px;
-            font-weight: $font-semi-bold;
-            margin-bottom: 20px;
-            letter-spacing: 0.8px;
-            text-align: right;
-        }
-        ngb-carousel { 
-            display: block;
-            height: 690px
         }
     }
 }
