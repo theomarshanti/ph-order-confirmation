@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     },
     [Pages.WIZARD]: {
       enforced: true,
-      timeout: 30000
+      timeout: 45000
     },
     [Pages.COMPLETION]: {
       enforced: true,
